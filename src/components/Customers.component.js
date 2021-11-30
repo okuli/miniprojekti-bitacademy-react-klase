@@ -8,22 +8,31 @@ class CustomersComponent extends Component {
         this.state = {
             customers: []
         }
+
+        this.addCustomer = this.addCustomer.bind(this);
+        this.deleteCustomer = this.deleteCustomer.bind(this);
     }
 
     componentDidMount() {
     }
 
+    addCustomer(){
+        this.props.history.push('/add-customer');
+    }
+
 
     deleteCustomer(id) {
         Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Delete",
-        })
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Delete",
+        }).then((result) => {
+            console.log("Deleted");
+        });
     }
 
 
